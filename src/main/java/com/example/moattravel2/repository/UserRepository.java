@@ -6,5 +6,6 @@ import com.example.moattravel2.entity.User;
 
 //method name, type of argument, type of returned value
 public interface UserRepository extends JpaRepository<User, Integer>{
+	public User findByEmail(String email);
 
 }
