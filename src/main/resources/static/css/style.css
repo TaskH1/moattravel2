@@ -22,7 +22,7 @@ a:hover {
 footer{
 	width: 100%;
 	height: 60px;
-	position: absollute;
+	position: absolute;
 	bottom: 0;
 	background-color: #f2f0eb;
 }
@@ -48,6 +48,40 @@ footer{
 }
 
 .moattravel-btn:hover {
+	opacity: 0.8;
+}
+
+.moattravel-page-link {
+	color: #5196a6;
+}
+
+.moattravel-page-link:hover {
+	color: #407784;
+}
+
+.moattravel-active {
+	background-color: #5196a6 !important;
+	border-color: #5196a6 !important;
+}
+
+.moattravel-pre-wrap {
+	white-space:pre-wrap;
+}
+
+.moattravel-link-danger {
+	color: #f2594b;
+}
+
+.moattravel-link-danger:hover {
+	color: #a63c3c
+}
+
+.moattravel-btn-danger {
+	background-color: #f2594b !important;
+	transition: 0.1s;
+}
+
+.moattravel-btn-danger:hover {
 	opacity: 0.8;
 }
 
