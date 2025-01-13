@@ -29,7 +29,7 @@ public class SignupForm {
 	
 	@NotBlank(message = "パスワードを入力して下さい。")
 	@Length(min = 8, message = "パスワードは8文字以上で入力して下さい")
-	private String passward;
+	private String password;
 	
 	@NotBlank(message = "パスワード（確認用）を入力して下さい")
 	private String passwordConfirmation;
