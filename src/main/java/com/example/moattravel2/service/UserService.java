@@ -47,7 +47,7 @@ public class UserService {
 	}
 	
 	//check if password and passwordConfirmation are identical or not
-	public boolean isSamePasseword(String password, String passwordConfirmation) {
+	public boolean isSamePassword(String password, String passwordConfirmation) {
 		return password.equals(passwordConfirmation);
 	}
 	
