@@ -16,6 +16,7 @@ import com.example.moattravel2.service.UserService;
 public class AuthController {
 	private final UserService userService;
 	
+	//Inject the UerServce dependency into the AuthController
 	public AuthController(UserService userService) {
 		this.userService = userService;
 	}
