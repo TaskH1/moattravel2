@@ -12,6 +12,8 @@ public interface HouseRepository extends JpaRepository<House, Integer> {
 	//Page is a generic type provided by Spring Data
 	//and it contains the House entity data
 	public Page<House> findByNameLike(String keyword, Pageable pageable);
+	public Page<House> findByNameLikeOrAddressLike(String nameKeyword, String addressKeyword, Pageable pageable);
+	public Page<House> findByAddressLike(String area, Pageable pageable);
 	public Page<House> findByPriceLessThanEqual(Integer price, Pageable pageable);
-
+ 
 }
