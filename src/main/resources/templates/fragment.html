@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thmeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
 		<div th:fragment="meta" th:remove="tag">
 			<meta charset="UTF-8">
@@ -44,6 +44,7 @@
 							<li class="nav-item" sec:authorize="isAnonymous()">
 								<a class="nav-link" th:href="@{/signup}">会員登録</a>
 							</li>
+							
 							<!-- Displayed if loggedin -->
 							<li class="nav-item" sec:authorize="hasRole('ROLE_GENERAL')">
 								<a id="navbarDropdownGeneral" class="nav-link dropdown-toggle" href="#"
@@ -52,6 +53,9 @@
 								</a>
 								
 								<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownGeneral">
+									<a class="dropdown-item moattravel-dropdown-item" th:href="@{/user}">会員情報</a>
+									<div class="dropdown-divider"></div>
+
 									<a class="dropdown-item moattravel-dropdown-item" th:href="@{/logout}" 
 									onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 									ログアウト
