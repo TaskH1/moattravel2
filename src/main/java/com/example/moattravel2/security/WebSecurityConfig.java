@@ -18,7 +18,7 @@ public class WebSecurityConfig {
 		http
 			.authorizeHttpRequests((requests) -> requests
 					//URL permmitted for all users
-					.requestMatchers("/css/**", "/images/**", "/js/**", "/storage/**", "/", "/signup/**", "/houses").permitAll()
+					.requestMatchers("/css/**", "/images/**", "/js/**", "/storage/**", "/", "/signup/**", "/houses", "/houses/{id}").permitAll()
 					//URL permmitted for only admin users
 					.requestMatchers("/admin/**").hasRole("ADMIN")
 					//any other URL needs to be logged in
