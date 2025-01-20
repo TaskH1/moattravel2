@@ -26,18 +26,26 @@ import com.example.moattravel2.repository.HouseRepository;
 import com.example.moattravel2.repository.ReservationRepository;
 import com.example.moattravel2.security.UserDetailsImpl;
 import com.example.moattravel2.service.ReservationService;
+import com.example.moattravel2.service.StripeService;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class ReservationController {
 	private final ReservationRepository reservationRepository;
 	private final HouseRepository houseRepository;
 	private final ReservationService reservationService;
+	private final StripeService stripeService;
 	
 	//constructor just define objects.
-	public ReservationController(ReservationRepository reservationRepository, HouseRepository houseRepository, ReservationService reservationService) {
+	public ReservationController(
+			ReservationRepository reservationRepository,
+			HouseRepository houseRepository,
+			ReservationService reservationService,
+			StripeService stripeService) {
 		this.reservationRepository = reservationRepository;
 		this.houseRepository = houseRepository;
 		this.reservationService = reservationService;
+		this.stripeService = stripeService;
 	}
 	
 	@GetMapping("/reservations")
@@ -89,6 +97,7 @@ public class ReservationController {
 	public String confirm(@PathVariable(name = "id") Integer id,
 			@ModelAttribute ReservationInputForm reservationInputForm,
 			@AuthenticationPrincipal UserDetailsImpl userDetailsImpl,
+			HttpServletRequest httpServletRequest,
 			Model model)
 	{
 		House house = houseRepository.getReferenceById(id);
@@ -106,15 +115,18 @@ public class ReservationController {
 				house.getId(), user.getId(), checkinDate.toString(), checkoutDate.toString(),
 				reservationInputForm.getNumberOfPeople(), amount);
 		
+		String sessionId = stripeService.createStripeSession(house.getName(), reservationRegisterForm, httpServletRequest);
+		
 		model.addAttribute("house", house);
 		model.addAttribute("reservationRegisterForm", reservationRegisterForm);
+		model.addAttribute("sessionId", sessionId);
 		
-	
-		
+
 		return "reservations/confirm";
 		
 	}
 	
+	/*
 	@PostMapping("/houses/{id}/reservations/create")
 	public String create(@ModelAttribute ReservationRegisterForm reservationRegisterForm) {
 		System.out.println("It is invoked");
@@ -122,5 +134,6 @@ public class ReservationController {
 		
 		return "redirect:/reservations?reserved";
 	}
+	*/
 
 }
